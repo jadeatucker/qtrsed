@@ -1,0 +1,4 @@
+qtrsed
+======
+
+Sed Qt GUI
