@@ -40,9 +40,10 @@ private slots:
 
     void on_runBtn_clicked();
 
-    void on_lineSedstr_textChanged(const QString &arg1);
+    void on_textSed_textChanged();
 
     void on_textInput_textChanged();
+
 
 private:
     Ui::QtrSed *ui;

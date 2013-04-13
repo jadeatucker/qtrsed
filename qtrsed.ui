@@ -40,7 +40,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QPlainTextEdit" name="textInput"/>
+       <widget class="QPlainTextEdit" name="textInput">
+        <property name="plainText">
+         <string>foo bar</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QLabel" name="outputLbl">
@@ -50,10 +54,17 @@
        </widget>
       </item>
       <item>
-       <widget class="QTextBrowser" name="textOutput"/>
+       <widget class="QTextBrowser" name="textOutput">
+        <property name="plainText">
+          <string>bar bar</string>
+        </property>
+       </widget>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <property name="spacing">
+         <number>25</number>
+        </property>
         <item>
          <widget class="QLabel" name="sedcmdLbl">
           <property name="text">
@@ -61,7 +72,21 @@
           </property>
          </widget>
         </item>
-        <item alignment="Qt::AlignRight">
+        <item>
+         <widget class="QCheckBox" name="optEChk">
+          <property name="text">
+           <string>Exteded Regexp (-E)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="optnChk">
+          <property name="text">
+           <string>Suppress Output (-n)</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QCheckBox" name="autorunChk">
           <property name="text">
            <string>Autorun</string>
@@ -74,8 +99,8 @@
        </layout>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineSedstr">
-        <property name="text">
+       <widget class="QPlainTextEdit" name="textSed">
+        <property name="plainText">
          <string>s/foo/bar/</string>
         </property>
        </widget>

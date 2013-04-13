@@ -29,6 +29,10 @@ QtrSed::QtrSed(QWidget *parent) :
     ui(new Ui::QtrSed)
 {
     ui->setupUi(this);
+    connect(ui->optEChk, SIGNAL(clicked()),
+            ui->runBtn, SLOT(click()));
+    connect(ui->optnChk, SIGNAL(clicked()),
+            ui->runBtn, SLOT(click()));
 }
 
 QtrSed::~QtrSed()
@@ -60,8 +64,19 @@ void QtrSed::on_actionOpen_triggered()
 void QtrSed::on_runBtn_clicked()
 {
     QString inputTxt = ui->textInput->toPlainText() + "\n";
-    QString sedCmd = ui->lineSedstr->text();
+    QString sedCmd = ui->textSed->toPlainText();
+    QString options = "";
     QStringList params;
+
+    if(ui->optEChk->isChecked())
+        options += "E";
+    if(ui->optnChk->isChecked())
+        options += "n";
+    if(options.length() > 0) {
+        options = "-" + options;
+        params << options;
+    }
+
     params << "-e" << sedCmd;
 
     QProcess p;
@@ -78,7 +93,7 @@ void QtrSed::on_runBtn_clicked()
     }
 }
 
-void QtrSed::on_lineSedstr_textChanged(const QString &arg1)
+void QtrSed::on_textSed_textChanged()
 {
     if(ui->autorunChk->isChecked())
       on_runBtn_clicked();
