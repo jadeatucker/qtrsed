@@ -7,6 +7,8 @@ Conveniently edit and test sed scripts with this editor that runs sed as
 you type - shortening your feedback loop. This app takes text input and 
 runs it through sed with the given options and command, displaying it in the output field.
 
+![Image](http://qt-apps.org/CONTENT/content-pre2/158186-2.png)
+
 Features
 ======
 - Autorun (run sed on every keystroke)
