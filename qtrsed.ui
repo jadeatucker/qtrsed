@@ -56,7 +56,7 @@
       <item>
        <widget class="QTextBrowser" name="textOutput">
         <property name="plainText">
-          <string>bar bar</string>
+         <string>bar bar</string>
         </property>
        </widget>
       </item>
@@ -152,8 +152,18 @@
     <property name="title">
      <string>File</string>
     </property>
+    <widget class="QMenu" name="menuExport">
+     <property name="title">
+      <string>Export</string>
+     </property>
+     <addaction name="actionBash_Script"/>
+    </widget>
     <addaction name="actionOpen"/>
-    <addaction name="actionSave"/>
+    <addaction name="separator"/>
+    <addaction name="actionSaveInput"/>
+    <addaction name="actionSaveOutput"/>
+    <addaction name="separator"/>
+    <addaction name="menuExport"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -171,9 +181,19 @@
     <string>Open</string>
    </property>
   </action>
-  <action name="actionSave">
+  <action name="actionSaveInput">
    <property name="text">
-    <string>Save</string>
+    <string>Save Input</string>
+   </property>
+  </action>
+  <action name="actionSaveOutput">
+   <property name="text">
+    <string>Save Output</string>
+   </property>
+  </action>
+  <action name="actionBash_Script">
+   <property name="text">
+    <string>Bash Script</string>
    </property>
   </action>
  </widget>

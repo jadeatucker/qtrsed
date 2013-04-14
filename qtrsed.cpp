@@ -61,6 +61,40 @@ void QtrSed::on_actionOpen_triggered()
     }
 }
 
+void QtrSed::on_actionSaveInput_triggered()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "qtrsed_input.txt", tr("Text Files (*.txt)"));
+
+    if (!fileName.isEmpty()) {
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly)) {
+            QMessageBox::critical(this, tr("Error"), tr("Could not save file"));
+        } else {
+            QTextStream stream(&file);
+            stream << ui->textInput->toPlainText();
+            stream.flush();
+            file.close();
+        }
+    }
+}
+
+void QtrSed::on_actionSaveOutput_triggered()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "qtrsed_output.txt", tr("Text Files (*.txt)"));
+
+    if (!fileName.isEmpty()) {
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly)) {
+           QMessageBox::critical(this, tr("Error"), tr("Could not save file"));
+        } else {
+            QTextStream stream(&file);
+            stream << ui->textOutput->toPlainText();
+            stream.flush();
+            file.close();
+        }
+    }
+}
+
 void QtrSed::on_runBtn_clicked()
 {
     QString inputTxt = ui->textInput->toPlainText() + "\n";
@@ -103,4 +137,36 @@ void QtrSed::on_textInput_textChanged()
 {
     if(ui->autorunChk->isChecked())
       on_runBtn_clicked();
+}
+
+void QtrSed::on_actionBash_Script_triggered()
+{
+    QString script = "#!/bin/bash\nsed ";
+    QString options = "";
+
+    if(ui->optEChk->isChecked())
+        options += "E";
+    if(ui->optnChk->isChecked())
+        options += "n";
+    if(options.length() > 0) {
+        options = "-" + options;
+        script += options;
+    }
+
+    script += "-e '\n";
+    script += ui->textSed->toPlainText() + "\n'\n";
+
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "qtrsed.sh", tr("Shell Script (*.sh)"));
+
+    if (!fileName.isEmpty()) {
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly)) {
+           QMessageBox::critical(this, tr("Error"), tr("Could not save file"));
+        } else {
+            QTextStream stream(&file);
+            stream << script;
+            stream.flush();
+            file.close();
+        }
+    }
 }

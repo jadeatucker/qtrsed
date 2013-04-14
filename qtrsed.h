@@ -38,12 +38,17 @@ private slots:
 
     void on_actionOpen_triggered();
 
+    void on_actionSaveInput_triggered();
+
+    void on_actionSaveOutput_triggered();
+
     void on_runBtn_clicked();
 
     void on_textSed_textChanged();
 
     void on_textInput_textChanged();
 
+    void on_actionBash_Script_triggered();
 
 private:
     Ui::QtrSed *ui;
